@@ -29,6 +29,9 @@ class AppBase extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
+                        <Home >
+                            <div><p>Using children</p></div>
+                        </Home>
                         <Home name={"Primo"} level={0} user = {users[0]} />
                         <Home name={"Secondo"} level={2} user = {users[1]} />
                         <Home name={"Terzo"} level={7} user = {users[2]} />

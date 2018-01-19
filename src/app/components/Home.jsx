@@ -2,37 +2,28 @@ import React from "react";
 
 export class Home extends React.Component {
     
+    constructor(props) {
+        super();
+        this.state = {
+            level: props.initialLevel,
+            name: props.name
+        };
+    }
+
+    onLevelUp() {
+        this.setState({
+            level: this.state.level +1
+
+        });
+        
+    }
+
     render() {
-
-        let name = "";
-        if(!this.props.user) {
-            name =  "In a new component!";
-        } else {
-            name = this.props.user.name;
-        }
-
-        let hobbies = [];
-        if(this.props.user) {
-            hobbies = this.props.user.hobbies;
-            //for(let h of this.props.user.hobbies){
-            //    hobbies = hobbies + h + " ";
-            //}
-            
-        }
-
         return(
             <div>
-                <p>Role: {this.props.name} - Level: {this.props.level}</p>
-                <p>User: {name} </p>
-                <div>
-                    <h4>Hobbies</h4>
-                    <ul>
-                        {hobbies.map((hobby, i) => <li key={i}>{hobby}</li>)}
-                    </ul>
-                </div>
-                <div>
-                    {this.props.children}
-                </div>
+                <p>User: {this.state.name} - Level: {this.state.level}</p>
+                <hr />
+                <button onClick={() => this.onLevelUp()} className="btn btn-primary">Level me up!</button>
             </div>
         );
         
@@ -41,8 +32,3 @@ export class Home extends React.Component {
 }
 
 //npm install --save prop-types
-//Home.propTypes = {
-//    name : React.PropTypes.string,
-//    level: React.PropTypes.number,
-//    user: React.PropTypes.object
-//}

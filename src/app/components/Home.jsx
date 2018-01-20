@@ -8,7 +8,8 @@ export class Home extends React.Component {
         this.state = {
             level: props.initialLevel,
             name: props.name,
-            peekUserList: props.peekUserList
+            peekUserList: props.peekUserList,
+            homeLink: props.homeLink
         };
     }
 
@@ -20,6 +21,11 @@ export class Home extends React.Component {
         
     }
 
+    onChangeName() {
+        //
+        this.props.changeLink(this.state.homeLink);
+    }
+
     render() {
         return(
             <div>
@@ -29,6 +35,7 @@ export class Home extends React.Component {
                 <hr />
                 <button onClick={this.state.peekUserList} className="btn btn-primary" >Take a peek</button>
                 <hr />
+                <button onClick={this.onChangeName.bind(this) } className="btn btn-primary">Change Header Link</button>
             </div>
         );
         
@@ -40,7 +47,8 @@ export class Home extends React.Component {
 Home.propTypes = {
     initialLevel: PropTypes.number,
     name: PropTypes.string,
-    peekUserList: PropTypes.func
+    peekUserList: PropTypes.func,
+    homeLink: PropTypes.string
 
 }
 
@@ -48,5 +56,6 @@ Home.propTypes = {
 Home.defaultProps = {
     name: 'My Nobody',
     initialLevel: 0,
-    peekUserList: () => { }
+    peekUserList: () => { },
+    homeLink: "Link to change"
   };

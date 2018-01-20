@@ -6,7 +6,11 @@ import { Home } from "./components/Home.jsx";
 class AppBase extends React.Component {
     constructor() {
         super();
-        this.users = [
+        this.state = {
+            homeLink: "Home"
+        };
+
+        let users = [
             {
                 name: "Anna",
                 level: 27,
@@ -31,22 +35,33 @@ class AppBase extends React.Component {
                 hobbies: ["Computing", "Cards"]
             }
         ];
+
+        this.state.users = users;
+    }
+
+    onChangeLinkName(newName) {
+        this.setState({
+            homeLink: newName
+        });
     }
 
     onPeekUserList() {
         console.log("onPeekUserList");
-        this.users.forEach((item) => console.log(item));
+        this.state.users.forEach((item) => console.log(item));
     };
 
     render() {
-        let users = this.users;
+        let users = this.state.users;
 
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        <Header text="Home" />        
+                        <Header text={this.state.homeLink} />        
                     </div>
+                </div>
+                <div className="row">
+                    <Home changeLink={this.onChangeLinkName.bind(this)} />
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">

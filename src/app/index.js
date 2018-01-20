@@ -36,7 +36,7 @@ class AppBase extends React.Component {
             }
         ];
 
-        this.state.users = users;
+        this.state.users = [];
     }
 
     onChangeLinkName(newName) {
@@ -61,7 +61,7 @@ class AppBase extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <Home changeLink={this.onChangeLinkName.bind(this)} />
+                    <Home homeLink={this.state.homeLink} changeLink={this.onChangeLinkName.bind(this)} />
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">

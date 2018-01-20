@@ -16,7 +16,6 @@ export class Home extends React.Component {
     onLevelUp() {
         this.setState({
             level: this.state.level +1
-
         });
         
     }
@@ -33,16 +32,34 @@ export class Home extends React.Component {
         }
 
     render() {
-        return(
+        let userNode = "";
+        if(this.state.name != ""){
+            userNode = (
             <div>
                 <p>User: {this.state.name} - Level: {this.state.level}</p>
                 <hr />
                 <button onClick={() => this.onLevelUp()} className="btn btn-primary">Level me up!</button>
                 <hr />
                 <button onClick={this.state.peekUserList} className="btn btn-primary" >Take a peek</button>
+            </div>
+            );
+        }
+
+        let changeLinkNode = "";
+        if(this.props.changeLink !== undefined) {
+            changeLinkNode = (
+                <div>
+                    <input type="text" onChange={ (event) => this.onHandleChangeValue(event) } value={this.state.homeLink} />
+                    <button onClick={this.onChangeName.bind(this) } className="btn btn-primary">Change Header Link</button>
+                </div>
+            );
+        } 
+
+        return(
+            <div>
+                {userNode}
+                {changeLinkNode}
                 <hr />
-                <input type="text" onChange={ (event) => this.onHandleChangeValue(event) } value={this.state.homeLink} />
-                <button onClick={this.onChangeName.bind(this) } className="btn btn-primary">Change Header Link</button>
             </div>
         );
         
@@ -55,14 +72,16 @@ Home.propTypes = {
     initialLevel: PropTypes.number,
     name: PropTypes.string,
     peekUserList: PropTypes.func,
-    homeLink: PropTypes.string
+    homeLink: PropTypes.string,
+    changeLink: PropTypes.func,
 
 }
 
 // Specifies the default values for props:
 Home.defaultProps = {
-    name: 'My Nobody',
+    name: "",
     initialLevel: 0,
-    peekUserList: () => { },
-    homeLink: "Link to change"
+    peekUserList: undefined,
+    homeLink: "Link to change",
+    changeLink: undefined
   };

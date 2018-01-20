@@ -36,7 +36,7 @@ class AppBase extends React.Component {
             }
         ];
 
-        this.state.users = [];
+        this.state.users = users;
     }
 
     onChangeLinkName(newName) {
@@ -51,7 +51,24 @@ class AppBase extends React.Component {
     };
 
     render() {
-        let users = this.state.users;
+        let usersNode = "";
+        if(this.state.homeLink === "Users"){
+            let users = this.state.users;
+            usersNode = (
+                <div className="row">
+                    <div className="col-xs-10 col-xs-offset-1">
+                        { users.map( (u, index) => <Home key={index} initialLevel={u.level} name={u.name} peekUserList={() => this.onPeekUserList()} /> )}
+                    </div>
+                </div>
+
+            );
+        } else {
+            usersNode = (
+                <div className="row">
+                    <div>No users</div>
+                </div>
+            );
+        }
 
         return (
             <div className="container">
@@ -63,11 +80,7 @@ class AppBase extends React.Component {
                 <div className="row">
                     <Home homeLink={this.state.homeLink} changeLink={this.onChangeLinkName.bind(this)} />
                 </div>
-                <div className="row">
-                    <div className="col-xs-10 col-xs-offset-1">
-                        { users.map( (u, index) => <Home key={index} initialLevel={u.level} name={u.name} peekUserList={() => this.onPeekUserList()} /> )}
-                    </div>
-                </div>
+                {usersNode}
             </div>
         );
     }

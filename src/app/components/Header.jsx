@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const Header = (props) => {
         return (
@@ -7,7 +8,7 @@ export const Header = (props) => {
                     <div className="navbar-header">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Home</a>
+                                <a className="nav-link" href="#">{props.text}</a>
                             </li>
                         </ul>
                     </div>
@@ -15,3 +16,7 @@ export const Header = (props) => {
             </nav>
         );
 };
+
+React.propTypes = {
+    text: PropTypes.string
+}

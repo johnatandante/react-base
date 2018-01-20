@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export class Home extends React.Component {
     
@@ -32,3 +33,8 @@ export class Home extends React.Component {
 }
 
 //npm install --save prop-types
+Home.propTypes = {
+    initialLevel: PropTypes.number,
+    name: PropTypes.string
+
+}

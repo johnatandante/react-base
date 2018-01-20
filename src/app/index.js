@@ -32,7 +32,7 @@ class AppBase extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        { users.map( (u, i) => <Home key={i} initialLevel={u.level} name={u.name} /> )}
+                        { users.map( (u, index) => <Home key={index} initialLevel={u.level} name={u.name} /> )}
                     </div>
                 </div>
             </div>

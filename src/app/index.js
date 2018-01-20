@@ -4,8 +4,9 @@ import { Header } from "./components/Header.jsx";
 import { Home } from "./components/Home.jsx";
 
 class AppBase extends React.Component {
-    render() {
-        let users = [
+    constructor() {
+        super();
+        this.users = [
             {
                 name: "Anna",
                 level: 27,
@@ -30,6 +31,15 @@ class AppBase extends React.Component {
                 hobbies: ["Computing", "Cards"]
             }
         ];
+    }
+
+    onPeekUserList() {
+        console.log("onPeekUserList");
+        this.users.forEach((item) => console.log(item));
+    };
+
+    render() {
+        let users = this.users;
 
         return (
             <div className="container">
@@ -40,7 +50,7 @@ class AppBase extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        { users.map( (u, index) => <Home key={index} initialLevel={u.level} name={u.name} /> )}
+                        { users.map( (u, index) => <Home key={index} initialLevel={u.level} name={u.name} peekUserList={() => this.onPeekUserList()} /> )}
                     </div>
                 </div>
             </div>

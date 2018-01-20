@@ -20,6 +20,14 @@ class AppBase extends React.Component {
                 name: "Dante",
                 level: 36,
                 hobbies: ["Computing", "Cards"]
+            },
+            {
+                level: 36,
+                hobbies: ["Computing", "Cards"]
+            },
+            {
+                name: "No level named",
+                hobbies: ["Computing", "Cards"]
             }
         ];
 

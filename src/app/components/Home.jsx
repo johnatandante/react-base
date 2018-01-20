@@ -38,3 +38,9 @@ Home.propTypes = {
     name: PropTypes.string
 
 }
+
+// Specifies the default values for props:
+Home.defaultProps = {
+    name: 'My Nobody',
+    initialLevel: 0
+  };

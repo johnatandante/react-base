@@ -4,11 +4,11 @@
   "description": "React app",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base src/ --inline --hot --port 3000",
+    "start": "webpack-dev-server --content-base src/ --inline --hot --port 3000 --history-api-fallback",
     "build:webpack": "webpack -d",
     "deploy": "cpx src/index.html dist/index.html",
-    "run:dev": "webpack-dev-server --content-base src/ --inline --hot",
-    "build:dev": "webpack -d && cpx src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot",
+    "run:dev": "webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
+    "build:dev": "webpack -d && cpx src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && cpx src/index.html dist/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +24,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-prop-types": "^0.4.0",
-    "react-router": "^4.2.0"
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

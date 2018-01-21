@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 export const Header = (props) => {
         return (
@@ -16,6 +15,3 @@ export const Header = (props) => {
         );
 };
 
-React.propTypes = {
-    text: PropTypes.string
-}

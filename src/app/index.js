@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
-//import { Router, Route } from "react-router";
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 import { Home } from "./components/Home.jsx";
+import { User } from "./components/User.jsx";
 import { Root } from "./components/Root.jsx";
 
 class AppBase extends React.Component {
@@ -11,9 +12,13 @@ class AppBase extends React.Component {
 
         return (
             <div className="container">
-                <Root>
-                    <Home > </Home>
-                </Root>
+                <BrowserRouter >
+                    <div>
+                        <Route path={"/home"} component={Home} />
+                        <Route path={"/user"} component={User} />
+                        <Route exact path={"/"} component={Home} />
+                    </div>
+                </BrowserRouter>
             </div>
         );
     }

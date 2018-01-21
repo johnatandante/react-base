@@ -1,7 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export class Home extends React.Component {
+export class User extends React.Component {
+
+    constructor(props) {
+        super(props);
+        let id = 0;
+        if(props.args)
+            id=props.args-id;
+
+        this.state = {
+            id: id
+        };
+    }
 
     onBackToHome() {
         // back to history
@@ -14,7 +25,7 @@ export class Home extends React.Component {
             <div>
                 <div>
                     <h3>User Page</h3>
-                    <p>User Id: {this.props.args.id}</p>
+                    <p>User Id: { this.state.id} </p>
                     <hr />
                     <button onClick={() => this.onBackToHome()} className="btn btn-primary">Back To Home</button>
                 </div>

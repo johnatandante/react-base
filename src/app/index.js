@@ -14,9 +14,9 @@ class AppBase extends React.Component {
             <div className="container">
                 <BrowserRouter >
                     <div>
-                        <Route path={"/home"} component={Home} />
+                        <Route exact path={"/"} component={Root} />
                         <Route path={"/user"} component={User} />
-                        <Route exact path={"/"} component={Home} />
+                        <Route path={"/home"} component={Home} />
                     </div>
                 </BrowserRouter>
             </div>
